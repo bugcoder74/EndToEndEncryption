@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary Ruhi!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&family=Pacifico&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Floating Hearts Animation */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff6b6b;
+            transform: rotate(45deg);
+            opacity: 0;
+            animation: float 6s ease-in infinite;
+        }
+
+        .heart:before, .heart:after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: -10px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: rotate(45deg) translateY(0) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(45deg) translateY(-500px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4rem;
+            color: #d63031;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .couple {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin: 1rem auto;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .couple:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Diary Section */
+        .diary-container {
+            perspective: 1000px;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .diary {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            transform-style: preserve-3d;
+            transition: transform 1.5s;
+            cursor: pointer;
+        }
+
+        .diary.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .diary-front, .diary-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .diary-front {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            transform: rotateY(0deg);
+        }
+
+        .diary-back {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            transform: rotateY(180deg);
+        }
+
+        .diary h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #d63031;
+            margin-bottom: 1rem;
+        }
+
+        .diary p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .diary-lock {
+            font-size: 2rem;
+            color: #d63031;
+            margin-top: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        /* Instagram Memory Scroller */
+        .instagram-section {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .instagram-header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .instagram-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 2px solid #ff6b6b;
+        }
+
+        .instagram-username {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .memory-scroller {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 1rem 0;
+            gap: 15px;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .memory-scroller::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .memory-scroller::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .memory-scroller::-webkit-scrollbar-thumb {
+            background: #ff6b6b;
+            border-radius: 10px;
+        }
+
+        .memory-post {
+            scroll-snap-align: start;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .memory-post:hover {
+            transform: translateY(-5px);
+        }
+
+        .memory-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .memory-caption {
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .memory-date {
+            color: #888;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .memory-actions {
+            display: flex;
+            padding: 0.5rem 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .memory-action {
+            margin-right: 1rem;
+            color: #555;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .memory-action:hover {
+            color: #ff6b6b;
+        }
+
+        /* Interactive Photo Gallery */
+        .gallery-section {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .gallery-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #d63031;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 250px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Love Meter */
+        .love-meter {
+            max-width: 500px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .meter-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #d63031;
+            margin-bottom: 1rem;
+        }
+
+        .meter-gauge {
+            height: 30px;
+            background: #f1f1f1;
+            border-radius: 15px;
+            margin: 1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .meter-fill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+            transform-origin: left;
+            transform: scaleX(0);
+            transition: transform 2s ease-out;
+            border-radius: 15px;
+        }
+
+        .meter-text {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            font-weight: bold;
+            color: #d63031;
+        }
+
+        .meter-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .meter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .footer-heart {
+            font-size: 3rem;
+            color: #ff6b6b;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .footer-message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #d63031;
+            margin: 1rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .diary {
+                height: 500px;
+            }
+            
+            .instagram-section, .love-meter {
+                margin: 2rem 1rem;
+            }
+            
+            .gallery-title {
+                font-size: 2.5rem;
+            }
+            
+            .footer-message {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+
+    <header>
+        <h1>Happy Anniversary Ruhi!</h1>
+        <img src="https://via.placeholder.com/150" alt="Couple photo" class="couple" id="couplePhoto">
+        <p>Today marks another year of our beautiful journey together</p>
+    </header>
+
+    <!-- Flipping Diary Section -->
+    <div class="diary-container">
+        <div class="diary" id="diary">
+            <div class="diary-front">
+                <h2>Our Love Diary</h2>
+                <p>Click to open our special memories</p>
+                <div class="diary-lock">
+                    <i class="fas fa-lock-open"></i>
+                </div>
+            </div>
+            <div class="diary-back">
+                <h2>To My Beautiful Ruhi</h2>
+                <p>Every day with you is a blessing I cherish. Your smile lights up my world, your love gives me strength, and your presence makes every moment magical.</p>
+                <p>I remember our first date, our first kiss, and all the little moments in between that have made this journey so special. I fall in love with you more each day.</p>
+                <p>Happy anniversary my love. Here's to many more years of laughter, adventures, and growing old together.</p>
+                <div class="diary-lock">
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instagram Memory Scroller -->
+    <div class="instagram-section">
+        <div class="instagram-header">
+            <img src="https://via.placeholder.com/50" alt="Profile" class="instagram-avatar" id="profileAvatar">
+            <div class="instagram-username">Ruhi & You ❤️</div>
+        </div>
+        <div class="memory-scroller" id="memoryScroller">
+            <div class="memory-post">
+                <img src="https://via.placeholder.com/300x300?text=Our+First+Date" alt="First Date" class="memory-image">
+                <div class="memory-caption">
+                    The day it all began ❤️ #FirstDate #LoveAtFirstSight
+                    <div class="memory-date">1 year ago</div>
+                </div>
+                <div class="memory-actions">
+                    <span class="memory-action"><i class="fas fa-heart"></i> 1.2K</span>
+                    <span class="memory-action"><i class="fas fa-comment"></i> 84</span>
+                </div>
+            </div>
+            <div class="memory-post">
+                <img src="https://via.placeholder.com/300x300?text=Beach+Vacation" alt="Beach Vacation" class="memory-image">
+                <div class="memory-caption">
+                    Sunset walks and endless talks 🌅 #BeachVibes #CoupleGoals
+                    <div class="memory-date">9 months ago</div>
+                </div>
+                <div class="memory-actions">
+                    <span class="memory-action"><i class="fas fa-heart"></i> 1.5K</span>
+                    <span class="memory-action"><i class="fas fa-comment"></i> 102</span>
+                </div>
+            </div>
+            <div class="memory-post">
+                <img src="https://via.placeholder.com/300x300?text=Anniversary+Dinner" alt="Anniversary Dinner" class="memory-image">
+                <div class="memory-caption">
+                    Celebrating us with candlelight and wine � #Anniversary #RomanticNight
+                    <div class="memory-date">6 months ago</div>
+                </div>
+                <div class="memory-actions">
+                    <span class="memory-action"><i class="fas fa-heart"></i> 2.1K</span>
+                    <span class="memory-action"><i class="fas fa-comment"></i> 156</span>
+                </div>
+            </div>
+            <div class="memory-post">
+                <img src="https://via.placeholder.com/300x300?text=Winter+Getaway" alt="Winter Getaway" class="memory-image">
+                <div class="memory-caption">
+                    Keeping each other warm in the snow ❄️ #WinterRomance #CozyCouple
+                    <div class="memory-date">3 months ago</div>
+                </div>
+                <div class="memory-actions">
+                    <span class="memory-action"><i class="fas fa-heart"></i> 1.8K</span>
+                    <span class="memory-action"><i class="fas fa-comment"></i> 127</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Photo Gallery -->
+    <div class="gallery-section">
+        <h2 class="gallery-title">Our Journey Together</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/250x250?text=First+Kiss" alt="First Kiss" class="gallery-image">
+                <div class="gallery-caption">The moment everything changed</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/250x250?text=Adventure" alt="Adventure" class="gallery-image">
+                <div class="gallery-caption">Exploring the world together</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/250x250?text=Lazy+Day" alt="Lazy Day" class="gallery-image">
+                <div class="gallery-caption">Perfect lazy Sundays</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/250x250?text=Special+Occasion" alt="Special Occasion" class="gallery-image">
+                <div class="gallery-caption">Celebrating special moments</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Love Meter -->
+    <div class="love-meter">
+        <h2 class="meter-title">Our Love Meter</h2>
+        <p>How much do I love you? Let's find out!</p>
+        <div class="meter-gauge">
+            <div class="meter-fill" id="meterFill"></div>
+        </div>
+        <div class="meter-text" id="meterText">Click the button below</div>
+        <button class="meter-btn" id="meterBtn">Measure Our Love</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-heart">
+            <i class="fas fa-heart"></i>
+        </div>
+        <div class="footer-message">Forever and Always</div>
+        <p>Thank you for being you, Ruhi. I love you more than words can express.</p>
+    </footer>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const heartCount = 30;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                
+                // Random position
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight + window.innerHeight;
+                
+                // Random size
+                const size = Math.random() * 15 + 10;
+                
+                // Random animation duration and delay
+                const duration = Math.random() * 5 + 5;
+                const delay = Math.random() * 5;
+                
+                heart.style.left = `${posX}px`;
+                heart.style.top = `${posY}px`;
+                heart.style.width = `${size}px`;
+                heart.style.height = `${size}px`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.animationDelay = `${delay}s`;
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Diary flip animation
+        document.getElementById('diary').addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
+        
+        // Love meter animation
+        document.getElementById('meterBtn').addEventListener('click', function() {
+            const fill = document.getElementById('meterFill');
+            const text = document.getElementById('meterText');
+            
+            fill.style.transform = 'scaleX(1)';
+            text.textContent = 'Infinite! My love for you has no limits ❤️';
+            
+            // Reset after 3 seconds
+            setTimeout(() => {
+                fill.style.transform = 'scaleX(0)';
+                text.textContent = 'Click the button to measure again';
+            }, 3000);
+        });
+        
+        // Auto-scroll memory scroller
+        let scrollPosition = 0;
+        const scroller = document.getElementById('memoryScroller');
+        
+        function autoScroll() {
+            scrollPosition += 1;
+            if (scrollPosition >= scroller.scrollWidth - scroller.clientWidth) {
+                scrollPosition = 0;
+            }
+            scroller.scrollTo({
+                left: scrollPosition,
+                behavior: 'smooth'
+            });
+            setTimeout(autoScroll, 50);
+        }
+        
+        // Load images function (replace with your actual images)
+        function loadImages() {
+            // Replace with your couple photo
+            document.getElementById('couplePhoto').src = 'couple-photo.jpg';
+            
+            // Replace with your profile photo
+            document.getElementById('profileAvatar').src = 'profile-photo.jpg';
+            
+            // Replace memory scroller images (4 images)
+            const memoryImages = document.querySelectorAll('.memory-image');
+            const memoryPhotoNames = ['first-date.jpg', 'beach-vacation.jpg', 'anniversary-dinner.jpg', 'winter-getaway.jpg'];
+            
+            memoryImages.forEach((img, index) => {
+                if (index < memoryPhotoNames.length) {
+                    img.src = memoryPhotoNames[index];
+                }
+            });
+            
+            // Replace gallery images (4 images)
+            const galleryImages = document.querySelectorAll('.gallery-image');
+            const galleryPhotoNames = ['first-kiss.jpg', 'adventure.jpg', 'lazy-day.jpg', 'special-occasion.jpg'];
+            
+            galleryImages.forEach((img, index) => {
+                if (index < galleryPhotoNames.length) {
+                    img.src = galleryPhotoNames[index];
+                }
+            });
+        }
+        
+        // Initialize everything when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            createHearts();
+            // loadImages(); // Uncomment this when you have actual images
+            autoScroll();
+        });
+    </script>
+</body>
+</html>
